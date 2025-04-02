@@ -1,2 +1,0 @@
-# Sriram.github.io
-portfolio

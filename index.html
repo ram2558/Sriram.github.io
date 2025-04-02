@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <style>
+        /* General Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #1a0b0b;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #ff6b6b;
+        }
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ff6b6b;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li {
+            margin: 0 20px;
+        }
+        .nav-links a {
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .nav-links a:hover {
+            background-color: #ff6b6b;
+            color: white;
+        }
+        /* Hero Section */
+        .hero-section {
+            background-image: url('hero-background.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 2s ease-in;
+        }
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .hero-content .highlight {
+            color: #ff6b6b;
+        }
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .hero-content .name {
+            display: block;
+        }
+        .btn {
+            background-color: #ff6b6b;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #e94e4e;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        /* About Section */
+        .about-section {
+            padding: 100px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+        .about-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .about-section p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+        }
+        .social-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .social-links li {
+            margin: 0 10px;
+        }
+        /* Education Section */
+        .education-section {
+            padding: 100px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+        .education-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .education-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .education-container h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .education-container p {
+            font-size: 18px;
+            color: #666;
+        }
+        /* Skills Section */
+        .skills-section {
+            padding: 100px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+        .skills-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .skills-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .skill {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: calc(16.66% - 20px);
+            background-color: #f8f9fa;
+        }
+        .skill h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .skill p {
+            font-size: 16px;
+            color: #666;
+        }
+        /* Projects Section */
+        .projects {
+            padding: 100px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+        .project {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            width: calc(33.33% - 40px);
+        }
+        .project img {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .project h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .project p {
+            font-size: 16px;
+            color: #666;
+        }
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 20px;
+            background-color: #333;
+            text-align: center;
+            color: white;
+        }
+        .contact-section h2 {
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+        .contact-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #f8f9fa;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #444;
+            color: white;
+        }
+        .contact-form input::placeholder, .contact-form textarea::placeholder {
+            color: #aaa;
+        }
+        .contact-form button {
+            background-color: #ff6b6b;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-form button:hover {
+            background-color: #e94e4e;
+            box-shadow: 0px 4px 15px rgba(255, 107, 107, 0.4);
+        }
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .modal-header h2 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .modal-header button {
+            background-color: transparent;
+            border: none;
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .modal-body {
+            padding: 20px;
+        }
+        .modal-body p {
+            font-size: 18px;
+            color: #666;
+        }
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #bbb;
+            padding: 20px;
+            text-align: center;
+        }
+        footer p {
+            font-size: 14px;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 20px;
+            }
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            .project {
+                width: calc(50% - 40px);
+            }
+            .skill {
+                width: calc(33.33% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .project {
+                width: 100%;
+                margin: 20px 0;
+            }
+            .skill {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#hero-section">Home</a></li>
+            <li><a href="#about-section">About</a></li>
+            <li><a href="#education-section">Education</a></li>
+            <li><a href="#skills-section">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact-section">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="hero-section" id="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to my portfolio, I'm <span class="highlight">Sriram Gaddoju</span></h1>
+            <p>Explore my projects and learn more about me.</p>
+            <button class="btn">Learn More</button>
+        </div>
+    </section>
+    <section class="about-section" id="about-section">
+        <h2>About Me</h2>
+        <p>I am expertise in developing innovative solutions using deep learning, computer vision, and NLP. Proficient in Python,  TensorFlow, PyTorch, and MySQL, with a proven track record of delivering impactful projects.</p>
+        <ul class="social-links">
+            <li><a href="https://www.linkedin.com/in/sriram-gaddoju-648345230/" target="_blank"><i class="bi bi-linkedin"></i></a></li>
+            <li><a href="https://github.com/Sriram0805" target="_blank"><i class="bi bi-github"></i></a></li>
+        </ul>
+    </section>
+    <section class="education-section" id="education-section">
+        <h2>Education</h2>
+        <div class="education-container">
+            <h3>B.Tech in Computer Science and Engineering (AI & ML)</h3>
+            <p>Vardhaman College of Engineering (2021 - 2025)</p>
+            <p>CGPA: 8.12</p>
+        </div>
+    </section>
+    <section class="skills-section" id="skills-section">
+        <h2>Skills</h2>
+        <ul class="skills-list">
+            <li class="skill">
+                <h3>Python</h3>
+                <p>Proficient in Python programming language with experience in web development, data analysis, and machine learning.</p>
+            </li>
+            <li class="skill">
+                <h3>Deep Learning</h3>
+                <p>Experienced in deep learning frameworks such as TensorFlow and PyTorch, with a strong understanding of neural networks and convolutional neural networks.</p>
+            </li>
+            <li class="skill">
+                <h3>COMPUTER VISION</h3>
+                <p>Skilled in computer vision techniques such as object detection, image segmentation, and facial recognition using OpenCV and Pillow libraries.</p>
+            </li>
+            <li class="skill">
+                <h3>NLP</h3>
+                <p>Familiarity with natural language processing techniques such as text classification, sentiment analysis, and topic modeling using NLTK and spaCy libraries.</p>
+            </li>
+            <li class="skill">
+                <h3>MySQL</h3>
+                <p>Experience with MySQL database management system, including database design, querying, and data modeling.</p>
+            </li>
+            <li class="skill">
+                <h3>Web Development</h3>
+                <p>Knowledge of web development frameworks such as Flask and Django, with experience in building web applications using HTML, CSS, and JavaScript.</p>
+            </li>
+            <li class="skill">
+                <h3>Artificial Intelligence</h3>
+                <p>Skilled in artificial intelligence concepts such as machine learning, deep learning, and reinforcement learning, with experience in developing AI-powered applications.</p>
+            </li>
+            <li class="skill">
+                <h3>Machine Learning</h3>
+                <p>Experienced in machine learning algorithms such as regression, classification, clustering, and decision trees, with a strong understanding of model evaluation and optimization.</p>
+            </li>
+        </ul>
+    </section>
+    <section id="projects" class="projects">
+        <h2>Projects</h2>
+        <div class="project-container">
+            <div class="project" data-project="project1">
+                <img src="https://assets.onecompiler.app/43dmqn8vv/43dms9x3b/Screenshot%202025-04-02%20180214.png" alt="Project Image">
+                <h3>Summarize YouTube video with LLM</h3>
+                <p>This project aims to develop an AI-powered tool that automatically generates concise and informative summaries of YouTube videos using Large Language Models (LLMs). The system extracts audio from videos, converts speech to text, processes the transcript, and generates a structured summary.</p>
+            </div>
+            <div class="project" data-project="project2">
+                <img src="https://assets.onecompiler.app/43dmqn8vv/43dmqmk3f/Screenshot%202024-11-21%20145518.png" alt="Project Image">
+                <h3>Detecting DeepFake Videos and Images</h3>
+                <p>This project focuses on detecting DeepFake videos and images using deep learning techniques. DeepFakes, created using generative models like GANs and diffusion models, pose serious threats to privacy, security, and misinformation. This system leverages advanced computer vision models to identify manipulated media with high accuracy.</p>
+            </div>
+            <div class="project" data-project="project3">
+                <img src="https://assets.onecompiler.app/43dmqn8vv/43dms9x3b/Screenshot%202025-04-02%20181746.png" alt="Project Image">
+                <h3>Counterfeit Product Detection Using Algorand Blockchain</h3>
+                <p>This project utilizes the Algorand blockchain to develop a secure and transparent system for detecting counterfeit products. By leveraging the immutability and security features of blockchain technology, this system enables consumers and businesses to verify the authenticity of products, reducing the risk of counterfeiting and promoting trust in the supply chain.</p>
+            </div>
+        </div>
+    </section>
+    <section class="contact-section" id="contact-section">
+        <h2>Get in Touch</h2>
+        <p>Send me a message to learn more about my projects or to collaborate on a new project.</p>
+        <form class="contact-form">
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <textarea placeholder="Message"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    <div class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+               
